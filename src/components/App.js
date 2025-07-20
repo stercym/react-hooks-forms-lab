@@ -11,10 +11,15 @@ function App() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
 
+  function handleAddItem(newItem) {
+    //Spread the contents of the previous array to this new array
+    setItems((prevItems) => [...prevItems, newItem]);
+  }
+
   return (
     <div className={"App " + (isDarkMode ? "dark" : "light")}>
       <Header isDarkMode={isDarkMode} onDarkModeClick={handleDarkModeClick} />
-      <ShoppingList items={items} />
+      <ShoppingList items={items} onItemFormSubmit={handleAddItem} />
     </div>
   );
 }
